@@ -38,3 +38,9 @@ Use following directives while making Chatting site:
 
     - v-bind:class  
     - v-bind:style   
+
+    
+Use following directives while making Chatting site:
+
+    - v-bind:class  
+    - v-bind:style   
