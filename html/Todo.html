@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop - Events</title>
+    <link rel="stylesheet" href="../css/Todo.css">
+</head>
+
+<body>
+    <div id="app" class="container my-3" style="max-width: 500px;">
+        <form @submit.prevent="addTodo">
+            <div class="form-group">
+                <input type="text" name="todo" placeholder="Add Todo" v-model="currentTodo" class="form-control">
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center todoItem"
+                    v-for="(todo, index) in todos">
+                    <span @click="editTodo(todo, index)">{{todo}}</span>
+                    <button type="button" class="btn btn-danger" @click="removeTodo(index)">Delete</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="../js/Todo.js"></script>
+</body>
+
+</html>

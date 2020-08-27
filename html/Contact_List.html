@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact List</title>
+	<script src="https://kit.fontawesome.com/81bd68d9c5.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../css/Contact_List.css">
+	<style>
+		[v-cloak] {
+			display: none !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="contact-list" v-cloak>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 bg-dark p-2 d-flex justify-content-center text-light">
+					<h4>CONTACT LIST USING <small>Vue-JS</small></h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3 mt-4">
+					<button type="button" class="btn btn-dark rounded-pill shadow" @click="createNew = true">
+						<i class="fas fa-user-plus my-size mr-2 text-info"></i>
+						<strong class="text-light">Creat a new
+							Contact</strong>
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade show d-block" tabindex="-1" v-if="createNew" @click="createNew = false">
+						<div class="modal-dialog modal-lg" @click.stop>
+							<div class="modal-content">
+								<div class="modal-body">
+									<form action="">
+										<div class="row d-flex justify-content-center">
+											<div class="col-11 bg-secondar border border-success rounded pb-1">
+												<p class="border-bottom font-weight-bold p-3">Create new contact</p>
+												<div class="row">
+													<div class="col-sm form-group">
+														<label for=""><small>First name</small></label><br>
+														<input type="text" name="firstname"
+															class="form-control form-control-sm" required
+															pattern="[A-Za-z]*" autocomplete="off"
+															placeholder="first name" v-model="contact_details.fname">
+													</div>
+													<div class="col form-group">
+														<label for=""><small>Last name</small></label><br>
+														<input type="text" name="" class="form-control form-control-sm"
+															required pattern="[A-Za-z]*" autocomplete="off"
+															placeholder="last name" v-model="contact_details.lname">
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm form-group">
+														<label for=""><small>Phone number</small></label><br>
+														<input type="text" name="phone number"
+															class="form-control form-control-sm" required
+															pattern="[0-9]{10}" autocomplete="off"
+															placeholder="phone number"
+															v-model="contact_details.phone_number">
+													</div>
+													<div class="col form-group">
+														<label for=""><small>Email</small></label><br>
+														<input type="email" name="email"
+															class="form-control form-control-sm" required
+															pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+															autocomplete="off" placeholder="email"
+															v-model="contact_details.email">
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm form-group">
+														<label for=""><small>Country</small></label><br>
+														<input type="text" name="country"
+															class="form-control form-control-sm" required
+															pattern="[A-Za-z]*" autocomplete="off" placeholder="country"
+															v-model="contact_details.country">
+													</div>
+													<div class="col-sm form-group">
+														<label for=""><small>City</small></label><br>
+														<input type="text" name="city"
+															class="form-control form-control-sm" required
+															pattern="[A-Za-z]*" autocomplete="off" placeholder="city"
+															v-model="contact_details.city">
+													</div>
+													<div class="col form-group">
+														<label for=""><small>State</small></label><br>
+														<input type="text" name="state"
+															class="form-control form-control-sm" required
+															pattern="[A-Za-z]*" autocomplete="off" placeholder="state"
+															v-model="contact_details.state">
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-12 form-group">
+														<label for=""><small>Address</small></label><br>
+														<textarea name="address" cols="" rows=""
+															class="form-control form-control-sm" placeholder="address"
+															v-model="contact_details.address"></textarea>
+													</div>
+												</div>
+												<div class="row mt-3">
+													<div class="col-12  form-group text-right">
+														<button type="button" value="submit" class="btn btn-success"
+															v-on:click="saveContact()"
+															data-dismiss="modal">Save</button>
+														<button type="reset" value="reset"
+															class="btn btn-success">Reset</button>
+														<button type="button" class="btn btn-danger"
+															@click="createNew = false">Close</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col col-9 shadow-sm">
+					<div class="row d-flex justify-content-center mt-4 rows-cols-*">
+						<div class="col mr-2 border border-secondary rounded pb-1 my-style-1">
+							<div class="input-group flex-nowrap shadow-sm pt-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text bg-dark text-info" id="addon-wrapping"><i
+											class="fas fa-search" role="button"></i></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Username" aria-label="Username"
+									aria-describedby="addon-wrapping">
+							</div>
+							<div class="row rows-cols-3 border-bottom pt-3 text-center">
+								<div class="col font-weight-bold">Name</div>
+								<div class="col font-weight-bold">Email</div>
+								<div class="col font-weight-bold">Phone Number</div>
+							</div>
+							<div class="row rows-cols-4 mt-3 d-flex align-items-center border-bottom my_hover"
+								v-for="(value, index) in contact_Details" data-toggle="modal"
+								data-target="#exampleModal" @click="more_details(value)" role="button">
+								<!-- Modal -->
+								<div class="col col-1 rounded-pill d-flex align-items-center">
+									<span class="dot bg-danger text-light text-center pt-1">
+										<h4>{{value.fname.charAt(0)}}</h4>
+									</span>
+								</div>
+								<div class="col px-0"><span>{{value.fname}} {{value.lname}}</span></div>
+								<div class="col px-0"><span>{{value.email}}</span></div>
+								<div class="col px-0 text-center"><span>{{value.phone_number}}</span></div>
+							</div>
+							<div class="modal fade d-block show" tabindex="-1" v-if="selectedContact"
+								@click="more_details(null)">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content" @click.stop>
+										<div class="modal-header">
+											<div class="col col-2 rounded-pill d-flex align-items-center">
+												<span class="dot bg-danger text-light text-center pt-1">
+													<h3>{{selectedContact.fname.charAt(0)}}</h3>
+												</span>
+											</div>
+											<div class="col px-0 h4 pt-1"><span>{{selectedContact.fname}}
+													{{selectedContact.lname}}</span>
+											</div>
+											<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+											<button type="button" class="close" @click="more_details(null)">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<p class="h5">Contact details</p>
+											<div>
+												<div class="mb-3 mt-4"> <span><i
+															class="fas fa-user mr-2 ml-4"></i></span>
+													<p class="d-inline">{{selectedContact.fname}}
+														{{selectedContact.lname}}
+													</p>
+												</div>
+												<div class="mb-3"> <span><i class="fas fa-phone mr-2 ml-4"></i></span>
+													<p class="d-inline">{{selectedContact.phone_number}}</p>
+												</div>
+												<div class="mb-3"> <span><i
+															class="fas fa-envelope mr-2 ml-4"></i></span>
+													<p class="d-inline">{{selectedContact.email}}</p>
+												</div>
+												<div class="mb-3"> <span><i class="fas fa-flag mr-2 ml-4"></i></span>
+													<p class="d-inline">{{selectedContact.country}}</p>
+												</div>
+												<div class="mb-3"> <span><i class="fas fa-city mr-2 ml-4"></i></span>
+													<p class="d-inline">{{selectedContact.city}}</p>
+												</div>
+												<div class="mb-3"> <span><i class="fas fa-city mr-2 ml-4"></i></span>
+													<p class="d-inline">{{selectedContact.state}}</p>
+												</div>
+												<div class="mb-3"> <span><i
+															class="fas fa-map-marker-alt mr-2 ml-4"></i></span>
+													<p class="d-inline">{{selectedContact.address}}</p>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script src="../js/Contact_List.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp-Duplicate</title>
+    <link rel="stylesheet" href="../css/WhatsApp_chatting.css" />
+    <script src="https://kit.fontawesome.com/81bd68d9c5.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div id="">
+        <div class="container-fluid" style="background-color:#128C7E;">
+            <div class="row mx-0">
+                <div class="col-1 logo ml-2"></div>
+                <div class="col-11">
+                    <h3 class="text-light text-center">WhatsApp Chatting...</h3>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-2">
+                <!-- Below code is for sundar pichai -->
+                <div class="col col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 mx-sm-0 rounded mx-xl-5 mx-lg-5 mx-md-5 mb-sm-3 chat"
+                    id="chat">
+                    <div class="row rounded p-2" v-bind:style="{backgroundColor:'#075E54'}">
+                        <div class="col-2 pl-0 d-1"></div>
+                        <div class="col-10 d-flex align-items-center justify-content-between">
+                            <div class="col col-6 px-0">
+                                <small class="font-weight-bold text-light">SUNDAR PICHAI</small>
+                            </div>
+                            <div class="col col-6 px-0 d-flex justify-content-end text-light position-relative">
+                                <i class="fas fa-search pr-3" role="button" title="Search"
+                                    v-on:click='search_toggle()'></i>
+                                <i class="fas fa-paperclip" role="button" title="Attach"
+                                    v-on:click='attach_toggle()'></i>
+                                <div class="input-group flex-nowrap input-group-sm"
+                                    v-bind:class="{search_input:isActive}" v-show='isSearchActive'>
+                                    <div class="input-group-prepend" role="button" title="close"
+                                        v-on:click='search_toggle()'>
+                                        <span class="input-group-text" id="addon-wrapping"><i
+                                                class="fas fa-times"></i></span>
+                                    </div>
+                                    <input type="" class="form-control" placeholder="search here">
+                                </div>
+                                <input type="file" name="" value="" v-show='isattchActive'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col height rounded pt-2 d-flex align-items-end flex-column">
+                            <div v-for='value,index in massages' class="mb-2">
+                                <span style="background-color: #cfe9ba;" class="rounded d-inline p-1">{{value}}<small
+                                        class="ml-3"><sub>{{time()}}<i class="fas fa-check"></i></sub></small></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row bg-clr rounded">
+                        <div class="col col-lg-11 col-md-11 col-sm-12 p-3">
+                            <form action="" class="">
+                                <input type="text" name="chat" placeholder="Type a message..." class="form-control"
+                                    id="input-1" autocomplete="off" v-model='msg' />
+                            </form>
+                        </div>
+                        <div class="col px-lg-1 px-md-1 mr-1 d-flex justify-content-center">
+                            <button class="btn-style" id="voice" id="video" type="submit" value="submit" title="Mic"
+                                v-if="msg==''">
+                                <i class="fas fa-microphone"></i></button>
+                            <button class="btn-style" id="plane" type="submit" value="submit" title="Send" title="Send"
+                                v-on:click="arr_msg" v-else><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Below code is for Satya NADELLA -->
+                <div class="col col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 rounded chat" id="chat_1">
+                    <div class="row rounded p-2" v-bind:style="{backgroundColor:'#075E54'}">
+                        <div class="col-2 pl-0 d-2"></div>
+                        <div class="col-10 d-flex align-items-center">
+                            <div class="col col-6 px-0">
+                                <small class="font-weight-bold text-light">SATYA NADELLA</small>
+                            </div>
+                            <div class="col col-6 px-0 d-flex justify-content-end text-light position-relative">
+                                <i class="fas fa-search pr-3" role="button" title="Search"
+                                    v-on:click='search_toggle()'></i>
+                                <i class="fas fa-paperclip" role="button" title="Attach"
+                                    v-on:click='attach_toggle()'></i>
+                                <div class="input-group flex-nowrap input-group-sm"
+                                    v-bind:class="{search_input:isActive}" v-show='isSearchActive'>
+                                    <div class="input-group-prepend" role="button" title="close"
+                                        v-on:click='search_toggle()'>
+                                        <span class="input-group-text" id="addon-wrapping"><i
+                                                class="fas fa-times"></i></span>
+                                    </div>
+                                    <input type="" class="form-control" placeholder="search here">
+                                </div>
+                                <input type="file" name="" value="" v-show='isattchActive'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col height rounded pt-2">
+                            <div v-for='value,index in massages' class="mb-2">
+                                <span style="background-color: #fff;" class="rounded d-inline p-1">{{value}}<small
+                                        class="ml-3"><sub>{{time()}}<i class="fas fa-check"></i></sub></small></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row bg-clr rounded">
+                        <div class="col col-lg-11 col-md-11 col-sm-12 p-3">
+                            <form action="" class="">
+                                <input type="text" name="chat" value="" placeholder="Type a message..."
+                                    class="form-control" id="input-1" autocomplete="off" v-model="msg1" />
+                            </form>
+                        </div>
+                        <div class="col px-lg-1 px-md-1 mr-1 d-flex justify-content-center">
+                            <button class="btn-style" id="voice" type="submit" value="submit" title="Mic"
+                                v-if="msg1==''">
+                                <i class="fas fa-microphone"></i></button>
+                            <button class="btn-style" id="plane" type="submit" value="submit" title="Send" title="Send"
+                                v-else v-on:click='arr_msg1()'><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        navigator.getUserMedia = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia;
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({
+                audio: true,
+                video: {
+                    width: 1280,
+                    height: 720
+                }
+            },
+                function (stream) {
+                    var video = document.querySelector('#video');
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function (e) {
+                        video.play();
+                    };
+                },
+                function (err) {
+                    console.log("The following error occurred: " + err.name);
+                }
+            );
+        } else {
+            console.log("getUserMedia not supported");
+        }
+    </script>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/WhatsApp_chatting.js"></script>
+</body>
+
+</html>

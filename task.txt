@@ -1,0 +1,40 @@
+1. Create a form with following fields
+    -First name and Last name (minimum 3 letters)
+    -Email and phone number (minimum 3 letters)
+    -Biodata (minimum 20 letters)
+
+    Things will be used
+    -Two way databinding
+    -terninary operator
+
+2. A contact app ref- Your mobile contact app
+    features: 
+    - Add first/last name and mobile number
+    - Email and Country, State, City and Address
+    - Validate name and mobile number with regex
+    - Add to list and display
+    - Contact can be edited or removed
+
+    hint:
+    - Object array will be used
+    [
+        {
+            name: '',
+            mobile: '',
+        }
+    ]
+
+    concepts to be used:
+    - v-if 
+    - v-for
+    - v-model
+    - one way databinding
+    - array push
+    - object assign
+    - object spread operator
+
+
+Use following directives while making Chatting site:
+
+    - v-bind:class  
+    - v-bind:style   

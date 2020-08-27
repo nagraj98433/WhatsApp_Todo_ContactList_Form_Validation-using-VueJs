@@ -1,0 +1,35 @@
+@import url("./bootstrap.min.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.side-top {
+    caption-side: top;
+}
+
+small {
+    font-weight: 700;
+}
+.my-size{
+    font-size: 20px;
+}
+.my-style-1{
+    min-height: 85vh;
+}
+.dot {
+    height: 40px;
+    width: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+ .my_hover:hover{
+background-color: rgba(128, 128, 128, 0.1);
+  }
+  

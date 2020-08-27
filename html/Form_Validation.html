@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.JS-task-1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/Form_Validation.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-12 bg-success text-center p-3 mb-3 text-light font-weight-bolder rounded">
+            <h3>Form Validation Using <small class="text-dark">Vue-JS</small></h3>
+        </div>
+    </div>
+
+    <div class="size mb-5">
+        <div id="form">
+            <div class="container">
+                <form onsubmit="return validation()" action="/action_page.php">
+                    <div class="form-group">
+                        <label for="exampleInputName">First Name</label>
+                        <input type="text" class="form-control" id="exampleInputName" aria-describedby="NameHelp"
+                            placeholder="Type here" v-model="firstname" autocomplete="off" name="firstname" required>
+                        <small id="emailHelp"
+                            class="form-text text-danger">{{_firstName ? "": "Minimum 3 letters are required"}}</small>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputLastname">Last Name</label>
+                        <input type="text" class="form-control" id="exampleInputLastname"
+                            aria-describedby="LastnameHelp" placeholder="Type here" v-model="lastname"
+                            autocomplete="off" name="lastname" required>
+                        <small id="emailHelp"
+                            class="form-text text-danger">{{_lastName ? "": "Minimum 3 letters are required"}}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Type here" v-model="email" autocomplete="off" name="email" required>
+                        <small id="emailHelp"
+                            class="form-text text-danger">{{_email ? "": "Minimum 3 letters are required"}}</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Type here"
+                            v-model="password" autocomplete="off" name="password" required>
+                        <small id="emailHelp"
+                            class="form-text text-danger">{{_password ? "": "Minimum 3 letters are required"}}</small>
+                    </div>
+                    <!-- <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+                    <div class="form-group">
+                        <label for="exampleInputBiodata">Biodata</label>
+                        <!-- <input type="text" class="form-control" id="exampleInputName" aria-describedby="NameHelp"> -->
+                        <textarea name="Biodata" id="exampleInputBiodata" cols="20" rows="5" class="form-control"
+                            placeholder="Type here your biodata" v-model="biodata" autocomplete="off"
+                            required></textarea>
+                        <small id="emailHelp"
+                            class="form-text text-danger">{{_biodata ? "": "Minimum 20 letters are required"}}</small>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="reset" class="btn btn-success">
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/Form_Validation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
